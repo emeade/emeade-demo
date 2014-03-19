@@ -24,4 +24,6 @@ doc/
 .DS_Store
 .idea
 .secret
-workspace.xml
+
+# ignore the rubymine project config files
+.idea/*
