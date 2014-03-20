@@ -1,10 +1,14 @@
-<table>
-  <% @jobs.each do |job| %>
-  <tr>
-    <td><%= job.title %></td>
-    <td><%= raw job.content %></td>
-    <td><%= job.author %></td>
-    <td><%= job.published_at %></td>
-  </tr>
+<% if @jobs.empty? %>
+  Sorry no jobs.
+<% else %>
+  <table>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= raw job.content %></td>
+        <td><%= job.author %></td>
+        <td><%= job.published_at %></td>
+      </tr>
     <% end %>
-</table>
+  </table>
+<% end %>
