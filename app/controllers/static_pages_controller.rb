@@ -3,4 +3,7 @@ class StaticPagesController < ApplicationController
     @search = Jobs.search(params[:q])
     @jobs = @search.result(distinct: true)
   end
+  def style
+
+  end
 end
