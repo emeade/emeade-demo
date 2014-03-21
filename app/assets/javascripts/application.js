@@ -16,3 +16,7 @@
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require_tree .
+$(document).ready(function()
+{
+$("#q_reset").click(function(){$(".search-field").val('')});
+});

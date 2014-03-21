@@ -1,14 +1,33 @@
 <% if @jobs.empty? %>
   Sorry no jobs.
 <% else %>
+  <%= search_form_for @search, url: root_path do |f| %>
+    <%= f.label :title_cont %>
+    <%= f.text_field :title_cont, {:class => 'search-field form-control'} %>
+
+    <%= f.label :author_cont %>
+    <%= f.text_field :author_cont, {:class => 'search-field form-control'} %>
+
+    <%= f.submit %>
+    <%= f.submit "Clear", :name => nil, :id => :q_reset, :class => "btn btn-default btn-xs" %>
+  <% end %>
+
   <table>
+    <thead>
+    <th><%= sort_link(@search, :title, 'Title') %></th>
+    <th></th>
+    <th><%= sort_link(@search, :author, 'Department') %></th>
+    <th><%= sort_link(@search, :published_at, 'Posting Date') %></th>
+    </thead>
+    <tbody>
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.title %></td>
-        <td><%= raw job.content %></td>
+        <td><%#= raw job.content %></td>
         <td><%= job.author %></td>
-        <td><%= job.published_at %></td>
+        <td><%= l job.published_at %></td>
       </tr>
     <% end %>
+    </tbody>
   </table>
 <% end %>
