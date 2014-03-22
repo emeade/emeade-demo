@@ -1,6 +1,10 @@
 class Jobs < ActiveRecord::Base
   default_scope { order('published_at desc') }
 
+  def self.departments
+    unscoped.uniq.order('author asc').pluck(:author)
+  end
+
   def self.update_from_feed(feed_url)
     feed = Feedjira::Feed.fetch_and_parse feed_url
     feed.entries.each do |entry|

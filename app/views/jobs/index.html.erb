@@ -1,0 +1,66 @@
+<%= @deparments.inspect %>
+<h2 class="sub-header">Job Listings</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th colspan="3">
+
+        <%= search_form_for @search, url: jobs_path, :html => {:class => "form-inline", :role => "form"} do |f| %>
+          <div class="form-group">
+          Search: <%= f.text_field :title_cont, {:class => 'search-field form-control', :placeholder => 'Title contains...'} %>
+</div>
+          <div class="form-group">
+          <%= f.select :author_eq_any,
+                       Jobs.unscoped.uniq.order('author asc').pluck(:author).map { |u| [u, u] },
+                       { include_blank: true },
+                       { multiple: true, class: 'chosen-select search-field form-control' }
+          %>
+            </div>
+          <%#= f.collection_select :author_eq, Jobs.unscoped.uniq.order('author asc').pluck(:author), {:include_blank => true}, {:class => 'chosen-select search-field form-control input-sm'} %>
+
+          <%#= f.text_field :author_cont, {:class => 'search-field form-control', :placeholder => 'Select Department'} %>
+          <div class="form-group">
+          <%= f.submit :class => 'btn btn-primary' %>
+          <%= f.submit "Clear", :name => nil, :id => :q_reset, :class => "btn btn-default" %>
+            </div>
+        <% end %>
+      </th>
+    </tr>
+    <th><%= sort_link(@search, :title, 'Title') %></th>
+
+    <th><%= sort_link(@search, :author, 'Department') %></th>
+    <th><%= sort_link(@search, :published_at, 'Posting Date') %></th>
+    </thead>
+    <tbody>
+    <% unless @jobs.empty? %>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td>
+
+            <% if job.published_at >= 2.days.ago %>
+              <span class="badge badge-danger">new</span>
+            <% end %>
+            <%= link_to job.title, job_path(job), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window'} %><br>
+            <%= truncate(strip_tags(job.content), length: 200, separator: ' ') %>
+          </td>
+
+          <td><%= job.author %></td>
+          <td><%= l job.published_at %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<div id="modal-window" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
+
+

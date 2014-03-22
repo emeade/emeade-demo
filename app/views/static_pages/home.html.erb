@@ -1,18 +1,22 @@
 
-  <%= search_form_for @search, url: root_path, :html => {:class => "form-inline", :role => "form"} do |f| %>
-    <%= f.label :title_cont %>
-    <%= f.text_field :title_cont, {:class => 'search-field form-control'} %>
 
-    <%= f.label :author_cont %>
-    <%= f.text_field :author_cont, {:class => 'search-field form-control'} %>
-
-    <%= f.submit :class => 'btn btn-default' %>
-    <%= f.submit "Clear", :name => nil, :id => :q_reset, :class => "btn btn-default" %>
-  <% end %>
   <h2 class="sub-header">Job Listings</h2>
   <div class="table-responsive">
   <table class="table table-striped table-bordered">
     <thead>
+    <tr>
+      <th colspan="3">
+
+        <%= search_form_for @search, url: root_path, :html => {:class => "form-inline", :role => "form"} do |f| %>
+          Search: <%= f.text_field :title_cont, {:class => 'search-field form-control', :placeholder => 'Title contains...'} %>
+
+          <%= f.text_field :author_cont, {:class => 'search-field form-control', :placeholder => 'Select Department'} %>
+
+          <%= f.submit :class => 'btn btn-primary' %>
+          <%= f.submit "Clear", :name => nil, :id => :q_reset, :class => "btn btn-default" %>
+        <% end %>
+      </th>
+    </tr>
     <th><%= sort_link(@search, :title, 'Title') %></th>
 
     <th><%= sort_link(@search, :author, 'Department') %></th>
@@ -22,7 +26,7 @@
     <% unless @jobs.empty? %>
     <% @jobs.each do |job| %>
       <tr>
-        <td><% if job.published_at >= 2.day.ago %><span class="badge badge-danger">new</span> <% end %>
+        <td><% if job.published_at >= 2.days.ago %><span class="badge badge-danger">new</span> <% end %>
           <%= link_to job.title, root_path %><br>
           <%= truncate(strip_tags(job.content), length: 200, separator: ' ') %>
         </td>
