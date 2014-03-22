@@ -15,8 +15,17 @@
 //= require turbolinks
 // Loads all Bootstrap javascripts
 //= require bootstrap
+//= require chosen-jquery
 //= require_tree .
 $(document).ready(function()
 {
-$("#q_reset").click(function(){$(".search-field").val('')});
+    // reset form
+    $("#q_reset").click(function(){$(".search-field").val('')});
+
+    // chosen fields
+    $('.chosen-select').chosen({
+        allow_single_deselect: true,
+        no_results_text: 'No results matched',
+        width: '200px'
+    });
 });
