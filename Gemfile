@@ -51,6 +51,8 @@ gem 'ransack'
 gem 'will_paginate', '> 3.0'
 gem 'will_paginate-bootstrap'
 
+gem 'chosen-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
