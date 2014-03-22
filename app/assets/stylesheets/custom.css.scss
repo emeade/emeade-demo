@@ -838,3 +838,7 @@ $component-offset-horizontal: 180px !default;
 body {
   padding-top: 50px;
 }
+
+.badge-danger{
+  background-color: $brand-danger;
+}
