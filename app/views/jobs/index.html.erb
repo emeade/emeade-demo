@@ -1,10 +1,14 @@
 
-<h2 class="sub-header">Job Listings</h2>
+<div class="page-header">
+<div class="pull-right"><%= will_paginate @jobs, renderer: BootstrapPagination::Rails %></div>
+<h1>Job Listings</h1>
+</div>
 <div class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading">
-      <%= render 'jobs/search'  %>
-    </div>
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <%= render 'jobs/search' %>
+  </div>
+
   <table class="table table-striped table-bordered">
     <thead>
     <th class="col-md-7"><%= sort_link(@search, :title, 'Title') %></th>
@@ -24,9 +28,11 @@
             <br>
             <%= truncate(strip_tags(job.content), length: 200, separator: ' ') %>
             <br>
-            <small><%= link_to job.url, :target => '_blank', :title => 'View Original', :class => 'text-muted' do %>
+            <small>
+              <%= link_to job.url, :target => '_blank', :title => 'View Original', :class => 'text-muted' do %>
                 <%= job.url %> <span class="glyphicon glyphicon-new-window"></span>
-              <% end %></small>
+              <% end %>
+            </small>
           </td>
 
           <td><%= job.author %></td>
@@ -36,6 +42,7 @@
     <% end %>
     </tbody>
   </table>
+  <div class="pull-right"><%= will_paginate @jobs, renderer: BootstrapPagination::Rails %></div>
 </div>
 
 

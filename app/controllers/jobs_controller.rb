@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   def index
     @search = Jobs.search(params[:q])
     @search.sorts = 'published_at desc' if @search.sorts.empty?
-    @jobs = @search.result(distinct: true)
+    @jobs = @search.result(distinct: true).paginate(:page => params[:page])
   end
   def show
     @job = Jobs.find(params[:id])
