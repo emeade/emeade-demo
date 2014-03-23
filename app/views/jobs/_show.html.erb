@@ -1,8 +1,12 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
+
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h3 class="modal-title" id="myModalLabel"><%= @job.title %></h3>
+      <%= link_to @job.url, :target => '_blank', :title => 'View Original', :class => 'text-muted' do %>
+        <%= @job.url %> <span class="glyphicon glyphicon-new-window"></span>
+      <% end %>
     </div>
     <div class="modal-body">
       <%= raw @job.content %>
