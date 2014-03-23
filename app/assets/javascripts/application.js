@@ -20,7 +20,13 @@
 $(document).ready(function()
 {
     // reset form
-    $("#q_reset").click(function(){$(".search-field").val('')});
+    $("#jobs_search #q_reset").click(function(){
+        $("#jobs_search .search-field").val('');
+        $("#jobs_search .chosen-select").trigger("chosen:updated");
+        $.get($('#jobs_search').attr('action'),
+            $('#jobs_search').serialize(), null, 'script');
+        return false;
+    });
 
     // chosen fields
     $('.chosen-select').chosen({
