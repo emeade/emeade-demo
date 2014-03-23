@@ -1,0 +1,17 @@
+<%= search_form_for @search, url: jobs_path, :html => {:class => "form-inline", :role => "form"} do |f| %>
+  <div class="form-group">
+    <strong>Search:</strong> <%= f.text_field :title_cont, {:class => 'search-field form-control', :placeholder => 'Title contains...'} %>
+  </div>
+  <div class="form-group" style="width:400px;">
+    <%= f.select :author_eq_any,
+                 Jobs.unscoped.uniq.order('author asc').pluck(:author).map { |u| [u, u] },
+                 {include_blank: true},
+                 {multiple: true, class: 'chosen-select search-field form-control', data: {placeholder: 'Choose Departments...'}}
+    %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit :class => 'btn btn-primary' %>
+    <%= f.submit "Clear", :name => nil, :id => :q_reset, :class => "btn btn-default" %>
+  </div>
+<% end %>
