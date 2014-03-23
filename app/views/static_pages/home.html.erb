@@ -7,13 +7,13 @@
     <tr>
       <th colspan="3">
 
-        <%= search_form_for @search, url: root_path, :html => {:class => "form-inline", :role => "form"} do |f| %>
+        <%= search_form_for @search, url: root_path, :html => {:class => 'form-inline', :role => 'form'} do |f| %>
           Search: <%= f.text_field :title_cont, {:class => 'search-field form-control', :placeholder => 'Title contains...'} %>
 
           <%= f.text_field :author_cont, {:class => 'search-field form-control', :placeholder => 'Select Department'} %>
 
           <%= f.submit :class => 'btn btn-primary' %>
-          <%= f.submit "Clear", :name => nil, :id => :q_reset, :class => "btn btn-default" %>
+          <%= f.submit 'Clear', :name => nil, :id => :q_reset, :class => 'btn btn-default' %>
         <% end %>
       </th>
     </tr>
