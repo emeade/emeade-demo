@@ -836,8 +836,28 @@ $component-offset-horizontal: 180px !default;
 @import "bootstrap";
 
 body {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
+
 }
+header{
+  background-color: #666666;
+  border-bottom: 4px solid #BB0000;
+}
+
+.page-header{border:none;}
+
+header .nav{
+  margin-top: 30px;
+}
+
+header .nav a{
+  color: $gray-lighter;
+}
+
+header .nav a:hover{
+  color: $gray-darker;
+}
+.pagination-container{margin-bottom:50px; display:block;}
 
 .badge-danger{
   background-color: $brand-danger;
