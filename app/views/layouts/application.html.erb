@@ -17,12 +17,13 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
+
 <header class="header">
   <div class="container">
     <ul class="nav nav-pills pull-right">
-      <li <% if current_page?(controller: 'jobs', action: 'index')%>class="active"<% end %>><%= link_to "Home", root_path %></li>
-      <li <% if current_page?(controller: 'static_pages', action: 'about')%>class="active"<% end %>><%= link_to "About", static_pages_about_path %></li>
-      <li <% if current_page?(controller: 'static_pages', action: 'contact')%>class="active"<% end %>><%= link_to "Contact", static_pages_contact_path %></li>
+      <li class="<%= current_path(root_path) %>"><%= link_to "Home", root_path %></li>
+      <li class="<%= current_path(static_pages_about_path) %>"><%= link_to "About", static_pages_about_path %></li>
+      <li class="<%= current_path(static_pages_contact_path) %>"><%= link_to "Contact", static_pages_contact_path %></li>
     </ul>
     <%= link_to image_tag('osu-web-header-horiz-rev.png', :alt => 'The Ohio State University'), root_path, :class => 'brand' %>
   </div>

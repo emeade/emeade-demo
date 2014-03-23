@@ -1,4 +1,4 @@
-<%= search_form_for @search, url: jobs_path, :html => {:class => "form-inline", :role => "form"} do |f| %>
+<%= search_form_for @search, url: jobs_path, :id => 'jobs_search', :html => {:class => "form-inline", :role => "form"} do |f| %>
   <div class="form-group">
     <strong>Search:</strong> <%= f.text_field :title_cont, {:class => 'search-field form-control', :placeholder => 'Title contains...'} %>
   </div>

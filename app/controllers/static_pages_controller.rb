@@ -4,10 +4,6 @@ class StaticPagesController < ApplicationController
     @jobs = @search.result(distinct: true)
   end
 
-  def style
-
-  end
-
   def about
   end
 

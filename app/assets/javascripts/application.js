@@ -28,4 +28,26 @@ $(document).ready(function()
         no_results_text: 'No results matched',
         width: '95%'
     });
+
+    // Sorting and pagination links.
+    $('#jobs th a, #jobs .pagination a').on('click', function () {
+        $.getScript(this.href);
+        return false;
+    });
+
+    // Search form.
+
+
+    $('#jobs_search input').keyup(function () {
+        $.get($('#jobs_search').attr('action'),
+        $('#jobs_search').serialize(), null, 'script');
+        return false;
+    });
+
+    $("#jobs_search .chosen-select").chosen().change(function () {
+        $.get($('#jobs_search').attr('action'),
+            $('#jobs_search').serialize(), null, 'script');
+        return false;
+    })
 });
+    
