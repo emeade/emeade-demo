@@ -1,4 +1,0 @@
-== README
-
-Ruby on Rails 4 application to parse https://www.jobsatosu.com/all_jobs.atom
-
